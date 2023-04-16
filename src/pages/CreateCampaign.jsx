@@ -33,7 +33,10 @@ const CreateCampaign = () => {
                 setIsLoading(true);
                 await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) });
                 setIsLoading(false);
-                navigate('/');
+                // navigate('/');
+                // console.log(window.thirdWeb);
+                // console.log(await window.thirdWeb.eth.net.getId());
+                console.log(await window.thirdWeb.eth.net.getNetworkType());
             } else {
                 alert('Provide valid image URL')
                 setForm({ ...form, image: '' });
