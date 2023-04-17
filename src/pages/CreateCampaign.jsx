@@ -31,12 +31,10 @@ const CreateCampaign = () => {
         checkIfImage(form.image, async (exists) => {
             if (exists) {
                 setIsLoading(true);
+                console.log(form);
                 await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) });
                 setIsLoading(false);
-                // navigate('/');
-                // console.log(window.thirdWeb);
-                // console.log(await window.thirdWeb.eth.net.getId());
-                console.log(await window.thirdWeb.eth.net.getNetworkType());
+                navigate('/');
             } else {
                 alert('Provide valid image URL')
                 setForm({ ...form, image: '' });
