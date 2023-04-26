@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loader } from '../assets';
 import { FundCard } from '../components';
 
-const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
+const DisplayCampaigns = ({ title, isLoading, campaigns, isDarkModeActive }) => {
 
     const navigate = useNavigate();
 
@@ -30,6 +30,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
                         key={i}
                         {...campaign}
                         handleClick={() => handleNavigate(campaign)}
+                        isDarkModeActive={isDarkModeActive}
                     />)}
             </div>
         </div>
