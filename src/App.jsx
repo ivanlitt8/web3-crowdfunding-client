@@ -23,7 +23,7 @@ const App = () => {
         />
       </div>
       <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
-        <Navbar isDarkModeActive={isDarkModeActive} />
+        <Navbar isDarkModeActive={isDarkModeActive} handleDarkModeClick={handleDarkModeClick} />
         <Routes>
           <Route path="/" element={<Home isDarkModeActive={isDarkModeActive} />} />
           <Route path="/profile" element={<Profile isDarkModeActive={isDarkModeActive} />} />
