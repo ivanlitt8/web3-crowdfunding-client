@@ -58,13 +58,13 @@ const CampaignDetails = ({ isDarkModeActive }) => {
                     </div>
                 </div>
                 <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
-                    <CountBox title="Days Left" value={remainingDays} />
-                    <CountBox title={`Raised of ${state.target}`} value={state.amountCollected} />
-                    <CountBox title="Total Backers" value={donators.length} />
+                    <CountBox title="Days Left" value={remainingDays} isDarkModeActive={isDarkModeActive} />
+                    <CountBox title={`Raised of ${state.target}`} value={state.amountCollected} isDarkModeActive={isDarkModeActive} />
+                    <CountBox title="Total Backers" value={donators.length} isDarkModeActive={isDarkModeActive} />
                 </div>
             </div>
             <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
-                <div className="flex-[2] flex flex-col gap-[40px] rounded-[10px] mt-[20px] p-4 " style={{ backgroundColor: isDarkModeActive ? theme.backgroundCards : theme.backgroundCards }}>
+                <div className={`flex-[2] flex flex-col gap-[40px] rounded-[10px] mt-[20px] p-4 ${!isDarkModeActive ? 'shadow-lg shadow-cyan-500/50 border border-[#D9D9D9]' : ''}`} style={{ backgroundColor: isDarkModeActive ? theme.backgroundCards : theme.backgroundCards }}>
                     <div>
                         <h4 className="font-epilogue font-semibold text-[18px] text-white uppercase" style={{ color: isDarkModeActive ? theme.titleColor : theme.titleColor }}>Creator</h4>
                         <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
@@ -101,7 +101,7 @@ const CampaignDetails = ({ isDarkModeActive }) => {
                 </div>
 
                 <div className="flex-1">
-                    <div className={`mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px] ${!isDarkModeActive ? 'drop-shadow-md border border-[#D9D9D9]' : ''}`} style={{ backgroundColor: theme.backgroundCards }}>
+                    <div className={`mt-[20px] flex flex-col p-4 bg-[#1c1c24] rounded-[10px] ${!isDarkModeActive ? 'drop-shadow-md border border-[#D9D9D9] shadow-lg shadow-cyan-500/50' : ''}`} style={{ backgroundColor: theme.backgroundCards }}>
                         <p className="font-epilogue fount-medium text-[20px] leading-[30px] text-center text-[#808191]" style={{ color: isDarkModeActive ? theme.titleColor : theme.titleColor, fontWeight: "bold" }} >
                             Fund the campaign
                         </p>

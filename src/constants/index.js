@@ -28,10 +28,11 @@ export const navlinks = [
         imgUrl: profile,
         link: '/profile',
     },
+];
+export const logoutLink = [
     {
         name: 'logout',
         imgUrl: logout,
         link: '/',
-        disabled: true,
     },
-];
+]

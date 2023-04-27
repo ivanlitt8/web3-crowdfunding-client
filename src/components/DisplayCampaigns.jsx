@@ -13,7 +13,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns, isDarkModeActive }) => 
 
     return (
         <div>
-            <h1 className='font-epilogue font-semibold text-[18px] text-left text-white'>{title} ({campaigns.length})</h1>
+            <h1 className='font-epilogue font-semibold text-[18px] text-left' style={{ color: isDarkModeActive ? '#FFFFFF' : '#13131A', fontWeight: "bold" }}>{title} ({campaigns.length})</h1>
             <div className='flex flex-wrap mt-[20px] gap-[26px]'>
                 {isLoading && (
                     <img src={loader} alt="loader" className='w-[100px] h-[100px] object-contain' />

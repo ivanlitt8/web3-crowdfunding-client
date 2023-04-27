@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logo, sun } from '../assets';
-import { navlinks } from '../constants';
+import { navlinks, logoutLink } from '../constants';
 import { lightTheme, darkTheme } from "../themes/theme";
+import { useStateContext } from '../context';
 
 
 const Sidebar = ({ handleDarkModeClick }) => {
+
+    const { disconnect } = useStateContext();
 
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState('dashboard');
     const [isDarkModeActive, setIsDarkModeActive] = useState(true);
 
+    const handleLogoutClick = async () => {
+        await disconnect();
+        navigate(logoutLink[0].link);
+    };
+
     const handleClick = () => {
         setIsDarkModeActive(!isDarkModeActive);
-        setIsActive('darkMode'); // opcional, para activar un ícono de "modo oscuro" en la barra lateral
+        setIsActive('darkMode');
         handleDarkModeClick(!isDarkModeActive);
-        console.log("DarkModeActivado", !isDarkModeActive)
     }
 
     const theme = isDarkModeActive ? darkTheme : lightTheme;
 
-    const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
+    const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick, disconnect }) => (
         <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name ? `bg-${theme.selectedColor}` : ''} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick={handleClick}>
             {!isActive ? (
                 <img src={imgUrl} alt="fund_logo" className='w-1/2 h-1/2' />
@@ -45,6 +52,12 @@ const Sidebar = ({ handleDarkModeClick }) => {
                             }
                         }} />
                     ))}
+                    <Icon key={logoutLink[0].name} {...logoutLink[0]} isActive={isActive} handleClick={() => {
+                        if (!logoutLink[0].disabled) {
+                            setIsActive(logoutLink[0].name);
+                            handleLogoutClick();
+                        }
+                    }} disconnect={disconnect} />
                 </div>
                 <Icon
                     styles={`bg-[#1c1c24] shadow-secondary ${!isDarkModeActive ? 'bg-[#DCD5D5] shadow-inner' : ''} ${!isDarkModeActive && 'cursor-pointer'}`}

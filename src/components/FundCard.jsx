@@ -10,7 +10,7 @@ const FundCard = ({ owner, title, description, target, deadline, amountCollected
     const theme = isDarkModeActive ? darkTheme : lightTheme;
 
     return (
-        <div className={`sm:w-[288px] w-full rounded-[15px] cursor-pointer ${!isDarkModeActive ? 'shadow-lg shadow-cyan-500/50' : ''}`} style={{ backgroundColor: theme.backgroundCards }} onClick={handleClick}>
+        <div className={`sm:w-[288px] w-full rounded-[15px] cursor-pointer ${!isDarkModeActive ? 'shadow-lg shadow-cyan-500/50 border border-[#D9D9D9]' : ''}`} style={{ backgroundColor: theme.backgroundCards }} onClick={handleClick}>
             <img src={image} alt="fund" className='w-full h-[158px] object-cover rounded-[15px]' />
             <div className='flex flex-col p-4'>
                 <div className='flex flex-row items-center mb-[18px]'>
