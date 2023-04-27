@@ -26,9 +26,9 @@ const App = () => {
         <Navbar isDarkModeActive={isDarkModeActive} />
         <Routes>
           <Route path="/" element={<Home isDarkModeActive={isDarkModeActive} />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create-campaign" element={<CreateCampaign />} />
-          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
+          <Route path="/profile" element={<Profile isDarkModeActive={isDarkModeActive} />} />
+          <Route path="/create-campaign" element={<CreateCampaign isDarkModeActive={isDarkModeActive} />} />
+          <Route path="/campaign-details/:id" element={<CampaignDetails isDarkModeActive={isDarkModeActive} />} />
         </Routes>
       </div>
     </div>

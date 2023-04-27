@@ -8,7 +8,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns, isDarkModeActive }) => 
     const navigate = useNavigate();
 
     const handleNavigate = (campaign) => {
-        navigate(`/campaign-details/${campaign.title}`, { state: campaign });
+        navigate(`/campaign-details/${campaign.title}`, { state: campaign, isDarkModeActive });
     }
 
     return (

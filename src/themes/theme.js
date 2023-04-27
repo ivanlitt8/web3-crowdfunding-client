@@ -5,7 +5,10 @@ export const lightTheme = {
     textColor: "#3F3F40",
     titleColor: "#13131A",
     selectionColor: "#1DC071",
-    iconsCoor: "#999999"
+    iconsCoor: "#999999",
+    borderInput: "#D9D9D9",
+    fillInput: "#F7F7F7",
+    selectedColor: "#DCD5D5"
 };
 
 export const darkTheme = {
@@ -15,6 +18,9 @@ export const darkTheme = {
     textColor: "#808191",
     titleColor: "#FFFFFF",
     selectionColor: "#1DC071",
-    iconsCoor: "#989898"
+    iconsCoor: "#989898",
+    borderInput: "#3a433e",
+    fillInput: "#13131a",
+    selectedColor: "#DCD5D5"
 };
 

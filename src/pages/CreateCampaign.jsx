@@ -5,9 +5,9 @@ import { money } from '../assets';
 import { CustomButton, FormField, Loader } from '../components';
 import { checkIfImage } from '../utils';
 import { useStateContext } from '../context';
+import { darkTheme, lightTheme } from '../themes/theme';
 
-
-const CreateCampaign = () => {
+const CreateCampaign = ({ isDarkModeActive }) => {
 
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +20,8 @@ const CreateCampaign = () => {
         deadline: '',
         image: ''
     });
+
+    const theme = isDarkModeActive ? darkTheme : lightTheme;
 
     const handleFormFieldChange = (fieldName, e) => {
         setForm({ ...form, [fieldName]: e.target.value })
@@ -43,9 +45,9 @@ const CreateCampaign = () => {
     }
 
     return (
-        <div className='bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4'>
+        <div className={`flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 ${!isDarkModeActive ? 'drop-shadow-md border border-[#D9D9D9]' : ''}`} style={{ backgroundColor: theme.backgroundCards }}>
             {isLoading && <Loader />}
-            <div className='flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]'>
+            <div className='flex justify-center items-center p-[16px] sm:min-w-[380px]  bg-gradient-to-r from-[#614385] to-[#516395] rounded-[10px]'>
                 <h1 className='font-epilogue font-bolt sm:text-[25px] text-[18px] leading-[38px] text-white'>Start a Campaign</h1>
             </div>
             <form onSubmit={handleSubmit} className='w-full mt-[65px] flex flex-col gap-[30px]'>
@@ -56,6 +58,7 @@ const CreateCampaign = () => {
                         inputType="text"
                         value={form.name}
                         hanldeChange={(e) => handleFormFieldChange('name', e)}
+                        isDarkModeActive={isDarkModeActive}
                     />
                     <FormField
                         labelName="Campaign Title *"
@@ -63,6 +66,7 @@ const CreateCampaign = () => {
                         inputType="text"
                         value={form.title}
                         hanldeChange={(e) => handleFormFieldChange('title', e)}
+                        isDarkModeActive={isDarkModeActive}
                     />
                 </div>
                 <FormField
@@ -71,8 +75,9 @@ const CreateCampaign = () => {
                     isTextArea
                     value={form.description}
                     hanldeChange={(e) => handleFormFieldChange('description', e)}
+                    isDarkModeActive={isDarkModeActive}
                 />
-                <div className="w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
+                <div className="w-full flex justify-start items-center p-4 bg-gradient-to-r from-[#614385] to-[#516395] h-[120px] rounded-[10px]">
                     <img src={money} alt="money" className="w-[40px] h-[40px] object-contain" />
                     <h4 className="font-bold font-epilogue text-[25px] text-white ml-[20px]">
                         You will get the 100% of the raised amount
@@ -85,6 +90,7 @@ const CreateCampaign = () => {
                         inputType="text"
                         value={form.target}
                         hanldeChange={(e) => handleFormFieldChange('target', e)}
+                        isDarkModeActive={isDarkModeActive}
                     />
                     <FormField
                         labelName="End date *"
@@ -92,6 +98,7 @@ const CreateCampaign = () => {
                         inputType="date"
                         value={form.deadline}
                         hanldeChange={(e) => handleFormFieldChange('deadline', e)}
+                        isDarkModeActive={isDarkModeActive}
                     />
                 </div>
                 <FormField
@@ -100,12 +107,14 @@ const CreateCampaign = () => {
                     inputType="url"
                     value={form.image}
                     hanldeChange={(e) => handleFormFieldChange('image', e)}
+                    isDarkModeActive={isDarkModeActive}
                 />
                 <div className="flex justify-center items-center mt-[40px]">
                     <CustomButton
                         btnType="submit"
                         title="Submit new campaign"
                         styles="bg-[#1dc071]"
+                        isDarkModeActive={isDarkModeActive}
                     />
                 </div>
             </form>
