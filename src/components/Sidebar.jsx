@@ -6,13 +6,12 @@ import { lightTheme, darkTheme } from "../themes/theme";
 import { useStateContext } from '../context';
 
 
-const Sidebar = ({ handleDarkModeClick }) => {
+const Sidebar = ({ handleDarkModeClick, isDarkModeActive, setIsDarkModeActive }) => {
 
     const { disconnect } = useStateContext();
 
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState('dashboard');
-    const [isDarkModeActive, setIsDarkModeActive] = useState(true);
 
     const handleLogoutClick = async () => {
         await disconnect();

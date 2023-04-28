@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useStateContext } from '../context';
 import { DisplayCampaigns } from '../components';
 
-const Home = ({ isDarkModeActive }) => {
+const Home = ({ isDarkModeActive, searchQuery }) => {
+
     const [IsLoading, setIsLoading] = useState(false);
     const [campaigns, setCamapigns] = useState([]);
 
