@@ -6,13 +6,18 @@ import { navlinks, logoutLink } from '../constants';
 import { useStateContext } from '../context';
 import { lightTheme, darkTheme } from "../themes/theme";
 
-const Navbar = ({ isDarkModeActive, handleDarkModeClick }) => {
+const Navbar = ({ isDarkModeActive, handleDarkModeClick, searchQuery, setSearchQuery, handleSearchQueryLocalElevation }) => {
     const navigate = useNavigate();
     const [isActive, setIsActive] = useState('dashboard');
     const [toggleDrawer, setToggleDrawer] = useState(false);
     const { connect, address, disconnect } = useStateContext();
 
-    const [searchQuery, setSearchQuery] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleSearchQueryLocalElevation(searchQuery);
+        setSearchQuery(searchQuery); // Actualiza el estado en App.jsx
+        navigate(`/search-results?query=${searchQuery}`); // Cambia la URL
+    };
 
     const handleSearchQueryChange = (event) => {
         setSearchQuery(event.target.value);
@@ -20,7 +25,7 @@ const Navbar = ({ isDarkModeActive, handleDarkModeClick }) => {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
-        console.log('search query:', searchQuery);
+        setSearchFormSubmitted(true); // Establece el estado para indicar que el formulario ha sido enviado
     };
 
     const handleLogoutClick = async () => {
@@ -35,7 +40,6 @@ const Navbar = ({ isDarkModeActive, handleDarkModeClick }) => {
         handleDarkModeClick(!isDarkModeActive);
     }
 
-    const [campaigns, setCamapigns] = useState([]);
 
     const theme = isDarkModeActive ? darkTheme : lightTheme;
 
@@ -46,7 +50,7 @@ const Navbar = ({ isDarkModeActive, handleDarkModeClick }) => {
                     }`}
                     value={searchQuery}
                     onChange={handleSearchQueryChange} />
-                <div className='w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer mr-2' onClick={handleSearchSubmit}>
+                <div className='w-[72px] h-full rounded-[20px] bg-[#4acd8d] flex justify-center items-center cursor-pointer mr-2' onClick={handleSubmit}>
                     <img src={search} alt="search" className='w-[15px] h-[15px] object-contain' />
                 </div>
             </div>
@@ -123,7 +127,5 @@ const Navbar = ({ isDarkModeActive, handleDarkModeClick }) => {
         </div>
     )
 }
-
-
 
 export default Navbar
